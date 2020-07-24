@@ -1,0 +1,9 @@
+name: "Requirements Check"
+description: "Checks that all non-optional Requirements in a list have been checked"
+author: "Mary Davis"
+branding:
+  icon: "list"
+  color: "green"
+runs:
+  using: "node12"
+  main: "dist/index.js"
