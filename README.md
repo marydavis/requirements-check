@@ -25,8 +25,7 @@ Example:
 ```
 on:
   pull_request:
-    types: [edited, opened, reopened, synchronize]
-    branches: [ master ]
+    types: [ edited, opened, reopened, synchronize ]
 ```
 
 ## Action
@@ -44,7 +43,7 @@ uses: marydavis/requirements-check@v1
 name: PR Check
 on:
   pull_request:
-    types: [ opened, synchronize, reopened, edited ]
+    types: [ edited, opened, reopened, synchronize ]
 
 jobs:
   pr_ready_check:
@@ -52,12 +51,15 @@ jobs:
     name: PR Ready Check
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Install dependencies
+      run: npm ci
 
     - name: Check Format
-    - uses: npm run format-check
+      run: npm run format-check
 
     - name: Requirements Check
-    - uses: marydavis/requirements-check@v1
+      uses: marydavis/requirements-check@v1
 ```
 
 ## Protect branch
